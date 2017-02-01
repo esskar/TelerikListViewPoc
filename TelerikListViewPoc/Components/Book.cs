@@ -1,4 +1,6 @@
-﻿namespace TelerikListViewPoc.Components
+﻿using System.Diagnostics;
+
+namespace TelerikListViewPoc.Components
 {
     public class Book : Bindable
     {
@@ -14,7 +16,11 @@
 
         public string Title 
         {
-            get { return _title; }
+            get 
+            {
+                Debug.WriteLine("Title getter called for: {0}", _title);
+                return _title; 
+            }
             set { this.SetValue (ref _title, value); }
         }
 
