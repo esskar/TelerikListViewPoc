@@ -1,4 +1,5 @@
-﻿using Telerik.XamarinForms.DataControls.ListView;
+﻿using System.Diagnostics;
+using Telerik.XamarinForms.DataControls.ListView;
 using TelerikListViewPoc.Components;
 using Xamarin.Forms;
 
@@ -28,7 +29,8 @@ namespace TelerikListViewPoc.Controls
             {
                 Orientation = StackOrientation.Vertical,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Children = { titleLabel, authorLabel, yearLabel }
+                Children = { titleLabel, authorLabel, yearLabel },
+                HeightRequest = 100
             };
 
             this.View = viewLayout;
@@ -37,6 +39,18 @@ namespace TelerikListViewPoc.Controls
         public Book DataContext 
         {
             get { return this.BindingContext as Book; }
+        }
+
+        protected override void OnAppearing()
+        {
+            Debug.WriteLine("OnAppearing");
+            base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            Debug.WriteLine("OnDisappearing");
+            base.OnDisappearing();
         }
     }
 }
